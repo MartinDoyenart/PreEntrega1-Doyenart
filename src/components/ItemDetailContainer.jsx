@@ -1,13 +1,7 @@
 import React from "react";
-import ItemList from "./ItemList";
-import { useParams } from "react-router-dom";
-import { Center } from "@chakra-ui/react";
-import { useState } from "react";
+import ItemDetail from "./ItemDetail";
 
-const ItemListContainer = () => {
-  const { category } = useParams();
-  const { filterProduct, setFilterProduct } = useState([]);
-
+const ItemDetailContainer = () => {
   const productos = [
     {
       id: "1",
@@ -15,7 +9,7 @@ const ItemListContainer = () => {
       description: "Guitarra criolla de madera de balsa, ideal para no tocar.",
       stock: 5,
       Price: "$500",
-      category: "Guitarras-Bajos",
+      category: "Guitarras&Bajos",
     },
     {
       id: "2",
@@ -24,7 +18,7 @@ const ItemListContainer = () => {
         "Guitarra criolla de pino abeto, con terminaciones de nacar, cuerdas de nylon, ideal para principiantes.",
       stock: 100,
       Price: "$2500",
-      category: "Guitarras-Bajos",
+      category: "Guitarras&Bajos",
     },
     {
       id: "3",
@@ -33,7 +27,7 @@ const ItemListContainer = () => {
         "Guitarra electrica semiprofesional, madera de roble, excelente calidad.",
       stock: 16,
       Price: "$55000",
-      category: "Guitarras-Bajos",
+      category: "Guitarras&Bajos",
     },
     {
       id: "4",
@@ -42,7 +36,7 @@ const ItemListContainer = () => {
         "Guitarra electrica profesional, mejor madera que la otra, la mejor!.",
       stock: 8,
       Price: "$75000",
-      category: "Guitarras-Bajos",
+      category: "Guitarras&Bajos",
     },
     {
       id: "5",
@@ -50,7 +44,7 @@ const ItemListContainer = () => {
       description: "Bajo electrico, un solo modelo (suenan todos igual).",
       stock: 3,
       Price: "$25000",
-      category: "Guitarras-Bajos",
+      category: "Guitarras&Bajos",
     },
     {
       id: "6",
@@ -59,7 +53,7 @@ const ItemListContainer = () => {
         "Piano electrico con 84 teclas, blancas y negras, excelente sonido.",
       stock: 2,
       Price: "$250000",
-      category: "Pianos-Tecaldos",
+      category: "Pianos&Tecaldos",
     },
     {
       id: "7",
@@ -67,7 +61,7 @@ const ItemListContainer = () => {
       description: "Trompeta semi-profesional, excelente calidad.",
       stock: 10,
       Price: "$250000",
-      category: "Instrumentos-de-Viento",
+      category: "Instrumentos de Viento",
     },
     {
       id: "8",
@@ -75,7 +69,7 @@ const ItemListContainer = () => {
       description: "Saxofon tenor, hermoso sonido, terminacion laca brillante.",
       stock: 6,
       Price: "$490000",
-      category: "Instrumentos-de-Viento",
+      category: "Instrumentos de Viento",
     },
     {
       id: "9",
@@ -84,7 +78,7 @@ const ItemListContainer = () => {
         "Saxofon contralto, un poco mas chico, lindo, pero es mas lindo el tenor.",
       stock: 4,
       Price: "$380000",
-      category: "Instrumentos-de-Viento",
+      category: "Instrumentos de Viento",
     },
     {
       id: "10",
@@ -93,7 +87,7 @@ const ItemListContainer = () => {
         "Trombon a vara con transpositor, origen china, pero igual va muy bien.",
       stock: 78,
       Price: "$255000",
-      category: "Instrumentos-de-Viento",
+      category: "Instrumentos de Viento",
     },
     {
       id: "11",
@@ -101,7 +95,7 @@ const ItemListContainer = () => {
       description: "Clarinete soprano en Sib, madera, excelente calidad.",
       stock: 8,
       Price: "$12500",
-      category: "Instrumentos-de-Viento",
+      category: "Instrumentos de Viento",
     },
     {
       id: "12",
@@ -110,7 +104,7 @@ const ItemListContainer = () => {
         "Flauta traversa, sonido brillante, incluye tapones de oidos.",
       stock: 1,
       Price: "$9500",
-      category: "Instrumentos-de-Viento",
+      category: "Instrumentos de Viento",
     },
     {
       id: "13",
@@ -118,7 +112,7 @@ const ItemListContainer = () => {
       description: "Violin para tocar chacarera, otra musica no.",
       stock: 98,
       Price: "$35000",
-      category: "Instrumentos-de-Cuerda",
+      category: "Instrumentos de Cuerda",
     },
     {
       id: "14",
@@ -126,7 +120,7 @@ const ItemListContainer = () => {
       description: "Violoncello 4/4, como el violin pero mas grande.",
       stock: 3,
       Price: "$42500",
-      category: "Instrumentos-de-Cuerda",
+      category: "Instrumentos de Cuerda",
     },
     {
       id: "15",
@@ -135,7 +129,7 @@ const ItemListContainer = () => {
         "Bateria 5 cuerpos, madera de maple, parches hidraulicos, espectacular!",
       stock: 100,
       Price: "$259000",
-      category: "Instrumentos-de-Percusion",
+      category: "Instrumentos de Percusion",
     },
   ];
   const mostrarProductos = new Promise((resolve, reject) => {
@@ -156,21 +150,11 @@ const ItemListContainer = () => {
       console.log(error);
     });
 
-  const filteredProduct = productos.filter(
-    (producto) => producto.category === category
-  );
-
   return (
     <>
-      <Center p="1rem">
-        {category ? (
-          <ItemList productos={filteredProduct} />
-        ) : (
-          <ItemList productos={productos} />
-        )}
-      </Center>
+      <ItemDetail productos={productos} />
     </>
   );
 };
 
-export default ItemListContainer;
+export default ItemDetailContainer;
