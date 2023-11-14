@@ -1,7 +1,9 @@
-import React from "react";
-import { Badge, Box, Divider, Flex } from "@chakra-ui/react";
+import React, { useContext } from "react";
+import {  Box, Flex } from "@chakra-ui/react";
+import { CartContext } from "../context/CartContext";
 
 const CartWidget = () => {
+  const { totalQuantity } = useContext(CartContext);
   return (
     <div>
       <Flex>
@@ -11,11 +13,11 @@ const CartWidget = () => {
             version="1.1"
             id="Capa_1"
             xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
             width="40px"
             height="40px"
             viewBox="0 0 476.91 476.909"
-            xml:space="preserve"
+            xmlSpace="preserve"
           >
             <g>
               <g>
@@ -46,10 +48,7 @@ const CartWidget = () => {
             </g>
           </svg>
         </Box>
-        <Divider />
-        <Box>
-          <Badge colorScheme="purple">8</Badge>
-        </Box>
+        {totalQuantity}
       </Flex>
     </div>
   );

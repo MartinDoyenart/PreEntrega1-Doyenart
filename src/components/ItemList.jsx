@@ -1,16 +1,18 @@
 import React from "react";
 import Item from "./Item";
 
-const ItemList = ({ productos }) => {
+const ItemList = ({ products }) => {
   return (
-    <div>
-      {productos.map((p) => {
+    <div className="product-cards-container">
+      {products.map((p) => {
         return (
           <Item
+            key={p.id}
             id={p.id}
+            image={p.image}
             name={p.name}
             description={p.description}
-            Price={p.Price}
+            price={p.price}
             category={p.category}
           />
         );
@@ -19,4 +21,4 @@ const ItemList = ({ productos }) => {
   );
 };
 
-export default ItemList;
+export default React.memo(ItemList);
